@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.http import HttpResponse
 
 def index(request):
-  return render("Pierwsza apka Django!")
+  return HttpResponse("Pierwsza apka Django!")
