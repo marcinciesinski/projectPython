@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'crud.apps.CrudConfig',
     'phonenumber_field',
     'django.contrib.admin',
     'django.contrib.auth',
