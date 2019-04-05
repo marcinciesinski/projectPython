@@ -12,4 +12,4 @@ class Pracownik(models.Model):
   last_name = models.CharField(max_length=25)
   phone_number = PhoneNumberField(null=False, blank=False, unique=True)
   email = models.EmailField()
-  position = models.CharField(max_lenght=50)
+  position = models.CharField(max_length=50)
