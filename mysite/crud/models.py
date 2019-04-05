@@ -11,5 +11,5 @@ class Pracownik(models.Model):
   first_name = models.CharField(max_length=15)
   last_name = models.CharField(max_length=25)
   phone_number = PhoneNumberField(null=False, blank=False, unique=True)
-  email = models.EmailField()
+  email = models.EmailField(max_length=100)
   position = models.CharField(max_length=50)
