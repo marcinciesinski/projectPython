@@ -27,6 +27,7 @@
               <th scope="col">Id</th>
               <th scope="col">Nazwa:</th>
               <th scope="col">Kod działu:</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -35,10 +36,20 @@
                 <th scope="row">{{ dzial.pk }}</th>
                   <td>{{ dzial.name }}</td>
                   <td>{{ dzial.department_code }}</td>
+                  <td>
+                    <div class="form-check">
+                      <input class="form-check-input position-static" type="checkbox" value="">
+                    </div>
+                  </td>
               </tr>
             {% endfor %}
           </tbody>
         </table>
+        <div>
+          <a class="btn btn-primary" href="#" role="button">Dodaj dział</a>
+          <button class="btn btn-warning" type="submit">Edytuj</button>
+          <button  class="btn btn-danger" type="submit">Usuń zaznaczone</button>
+        </div>
       </div>
     {% else %}
       <p>Nie ma jeszcze dodanych żadnych działów</p>
