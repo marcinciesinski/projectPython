@@ -12,37 +12,9 @@
 
   <body>
 
-    <nav class="nav">
-      <a class="nav-link active" href="/crud">Strona główna</a>
-    </nav>
-
     <h3>Panel zarządzania działami firmy:</h3>
 
-    {% if dzial_list %}
-      <div class="table-responsive">
-        <table class="table table-bordered table-hover table-sm">
-          <caption>Lista działów</caption>
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">Id</th>
-              <th scope="col">Nazwa:</th>
-              <th scope="col">Kod działu:</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for dzial in dzial_list %}
-              <tr>
-                <th scope="row">{{ dzial.pk }}</th>
-                  <td>{{ dzial.name }}</td>
-                  <td>{{ dzial.department_code }}</td>
-              </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
-    {% else %}
-      <p>Nie ma jeszcze dodanych żadnych działów</p>
-    {% endif %}
+    
     
 
     <!-- Bootstrap JavaScript-->
