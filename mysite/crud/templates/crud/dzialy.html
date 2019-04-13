@@ -11,49 +11,49 @@
   </head>
 
   <body>
+    <div class="container">
+      <nav class="nav">
+        <a class="nav-link active" href="/crud">Strona główna</a>
+      </nav>
 
-    <nav class="nav">
-      <a class="nav-link active" href="/crud">Strona główna</a>
-    </nav>
+      <h3>Panel zarządzania działami firmy:</h3>
 
-    <h3>Panel zarządzania działami firmy:</h3>
-
-    {% if dzial_list %}
-      <div class="table-responsive">
-        <table class="table table-bordered table-hover table-sm">
-          <caption>Lista działów</caption>
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">Id</th>
-              <th scope="col">Nazwa:</th>
-              <th scope="col">Kod działu:</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for dzial in dzial_list %}
+      {% if dzial_list %}
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover table-sm">
+            <caption>Lista działów</caption>
+            <thead class="thead-dark">
               <tr>
-                <th scope="row">{{ dzial.pk }}</th>
-                  <td>{{ dzial.name }}</td>
-                  <td>{{ dzial.department_code }}</td>
-                  <td>
-                    <div class="form-check">
-                      <input class="form-check-input position-static" type="checkbox" value="">
-                    </div>
-                  </td>
+                <th scope="col">Id</th>
+                <th scope="col">Nazwa:</th>
+                <th scope="col">Kod działu:</th>
+                <th scope="col"></th>
               </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-        <div>
-          <a class="btn btn-primary" href="#" role="button">Dodaj dział</a>
-          <button class="btn btn-warning" type="submit">Edytuj</button>
-          <button  class="btn btn-danger" type="submit">Usuń zaznaczone</button>
+            </thead>
+            <tbody>
+              {% for dzial in dzial_list %}
+                <tr>
+                  <th scope="row">{{ dzial.pk }}</th>
+                    <td>{{ dzial.name }}</td>
+                    <td>{{ dzial.department_code }}</td>
+                    <td>
+                      <div class="container row row-centered">
+                        <button id="szczegoly" type="button" class=" btn btn-outline-primary btn-sm" onclick="location.href = '/crud/dzialy/{{ dzial.pk }}'">Szczegóły</button>
+                        <button id="edytuj" type="button" class=" btn btn-outline-warning btn-sm">Edytuj</button>
+                        <button id="usun" type="button" class=" btn btn-outline-danger btn-sm" onclick="location.href = '/crud/dzialy/{{ dzial.pk }}/delete'">Usuń</button>
+                      </div>
+                    </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
-      </div>
-    {% else %}
-      <p>Nie ma jeszcze dodanych żadnych działów</p>
-    {% endif %}
+      {% else %}
+        <p>Nie ma jeszcze dodanych żadnych działów</p>
+      {% endif %}
+    </div>
+    
+    <!-- Own script-->
     
 
     <!-- Bootstrap JavaScript-->

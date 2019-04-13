@@ -11,12 +11,56 @@
   </head>
 
   <body>
+    <div class="container">
+      <nav class="nav">
+        <a class="nav-link active" href="/crud">Strona główna</a>
+        <a class="nav-link active" href="/crud/dzialy">Powrót do działów</a>
+      </nav>
 
-    <nav class="nav">
-      <a class="nav-link active" href="/crud">Strona główna</a>
-    </nav>
+      <h3>Lista pracowników działu {{ dzial.name }}: </h3>
 
-    <h3>Lista pracowników działu {{ dzial.name }}: </h3>
+      {% if dzial.pracownik_set.all %}
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover table-sm">
+              <caption>Lista Pracowników działu {{ dzial.name }}</caption>
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Imię:</th>
+                  <th scope="col">Nazwisko:</th>
+                  <th scope="col">Numer telefonu:</th>
+                  <th scope="col">Email:</th>
+                  <th scope="col">Stanowisko:</th>
+                  <th scope="col">Id_działu</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for prac in dzial.pracownik_set.all %}
+                  <tr>
+                    <th scope="row">{{ prac.pk }}</th>
+                      <td>{{ prac.first_name }}</td>
+                      <td>{{ prac.last_name }}</td>
+                      <td>{{ prac.phone_number }}</td>
+                      <td>{{ prac.email }}</td>
+                      <td>{{ prac.position }}</td>
+                      <td>{{ dzial.pk }}</td>
+                      <td>
+                        <div class="container row row-centered">
+                          <button type="button" class=" btn btn-outline-primary btn-sm">Szczegóły</button>
+                          <button type="button" class=" btn btn-outline-warning btn-sm">Edytuj</button>
+                          <button type="button" class=" btn btn-outline-danger btn-sm">Usuń</button>
+                        </div>
+                      </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        {% else %}
+          <h1><p>Dział {{ dzial.name }} nie ma jeszcze dodanych pracowników</p></h1>
+        {% endif %}
+    </div>
 
     
     
