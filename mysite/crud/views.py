@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
 
 from .models import Dzial, Pracownik
 
@@ -14,3 +15,9 @@ def dzial_details(request, dzial_id):
   dzial = get_object_or_404(Dzial, pk = dzial_id)
   context = {'dzial': dzial}
   return render(request, 'crud/dzialDetails.html', context)
+
+def dzial_delete(request, dzial_id):
+  dzial = get_object_or_404(Dzial, pk = dzial_id)
+  context = {'dzial': dzial}
+  dzial.delete()
+  return render(request, 'crud/dzialDelete.html', context)
