@@ -1,10 +1,11 @@
 from django.db import models
+from django import forms
 from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Dzial(models.Model):
-  name = models.CharField(max_length=25)
-  department_code = models.CharField(max_length=5)
+  name = models.CharField(max_length=25, null=False, blank=False)
+  department_code = models.CharField(max_length=5, null=False, blank=False)
   def __str__(self):
     return self.name + "(" + self.department_code + ")"
 
