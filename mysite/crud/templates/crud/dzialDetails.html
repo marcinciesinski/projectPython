@@ -47,17 +47,19 @@
                       <td>{{ dzial.pk }}</td>
                       <td>
                         <div class="container row row-centered">
-                          <button type="button" class=" btn btn-outline-warning btn-sm">Edytuj</button>
-                          <button type="button" class=" btn btn-outline-danger btn-sm">Usuń</button>
+                          <button type="button" class=" btn btn-outline-warning btn-sm" onclick="location.href = '/crud/dzialy/{{ dzial.pk }}/edit/prac/{{ prac.pk }}'">Edytuj</button>
+                          <button type="button" class=" btn btn-outline-danger btn-sm" onclick="location.href = '/crud/dzialy/{{ dzial.pk }}/delete/prac/{{ prac.pk }}'">Usuń</button>
                         </div>
                       </td>
                   </tr>
                 {% endfor %}
               </tbody>
             </table>
+            <button type="button" class="btn btn-primary btn-lg" onclick="location.href = '/crud/dzialy/add/{{ dzial.pk }}/prac'">Dodaj pracownika</button>
           </div>
         {% else %}
           <h1><p>Dział {{ dzial.name }} nie ma jeszcze dodanych pracowników</p></h1>
+          <button type="button" class="btn btn-primary btn-lg" onclick="location.href = '/crud/dzialy/add/{{ dzial.pk }}/prac'">Dodaj pracownika</button>
         {% endif %}
     </div>
 

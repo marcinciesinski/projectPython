@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+    <title>Crud application</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <nav class="nav">
+        <a class="nav-link active" href="/crud">Strona główna</a>
+        <a class="nav-link active" href="/crud/dzialy/{{ dzial.pk }}">Powrót do działu</a>
+      </nav>
+
+      {% if error_message_add %}
+        <p><strong> {{ error_message_add }}</strong></p>
+        <a class="nav-link active" href="/crud/dzialy/{{ dzial.pk }}">Powrót do działu</a>
+      {% else %}
+
+        <h3>Dodaj pracownika:</h3>
+        <form action="{% url 'crud:dzial_add_new_prac' dzial.pk  %}" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="pracownikID">Id działu:</label>
+            <input type="number" min="1" name="dzialId" value="{{ dzial.pk }}" class="form-control" id="dzialId" placeholder="Id działu">
+          </div>
+          <div class="form-row">
+            <div class="form-group col">
+              <label for="pracownikName">Imię:</label>
+              <input type="text" name="pracownikName" value="{{ pracownik_name }}" class="form-control" id="pracownikName" placeholder="Imię pracownika">
+            </div>
+            <div class="form-group col">
+              <label for="departmentCode">Nazwisko:</label>
+              <input type="text" name="pracownikLastName" value="{{ pracownik_last_name }}" class="form-control" id="departmentCode" placeholder="Nazwisko pracownika">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="pracownikPhoneNum">Numer telefonu:</label>
+            <input type="tel" name="pracownikPhoneNum" value="{{ phone_num }}" class="form-control" id="pracownikPhoneNum" placeholder="Numer telefonu: +48">
+          </div>
+          <div class="form-group">
+            <label for="pracownikEmail">Email:</label>
+            <input type="email" name="pracownikEmail" value="{{ email }}" class="form-control" id="pracownikEmail" placeholder="Email: example@example.pl">
+          </div>
+          <div class="form-group">
+            <label for="pracownikPosition">Stanowisko:</label>
+            <input type="text" name="pracownikPosition" value="{{ position }}" class="form-control" id="pracownikPosition" placeholder="Stanowisko">
+          </div>
+          <div class="form-row">
+            <button type="submit" class="btn btn-primary">Zapisz</button>
+          </div>
+        </form>     
+      {% endif %}
+
+    </div>
+
+    <!-- Bootstrap JavaScript-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+
+</html> 
