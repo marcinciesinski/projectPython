@@ -23,11 +23,11 @@
         <div class="form-row">
           <div class="form-group col">
             <label for="departmentName">Nazwa działu:</label>
-            <input type="text" name="departmentName" value="{{ dzial_name }}" class="form-control" id="departmentName" placeholder="Nazwa działu">
+            <input type="text" name="name" value="{{ dzial_name }}" class="form-control" id="departmentName" placeholder="Nazwa działu",maxlength="25", required>
           </div>
           <div class="form-group col">
             <label for="departmentCode">Kod działu:</label>
-            <input type="text" name="departmentCode" value="{{ department_code }}" class="form-control" id="departmentCode" placeholder="Kod działu">
+            <input type="text" name="department_code" value="{{ department_code }}" class="form-control" id="departmentCode" placeholder="Kod działu", maxlength="5", required>
           </div>
         </div>
         <div class="form-row">

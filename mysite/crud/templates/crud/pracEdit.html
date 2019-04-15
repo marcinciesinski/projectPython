@@ -25,31 +25,32 @@
         <h3>Edytuj pracownika:</h3>
         <form action="{% url 'crud:prac_to_edit' dzial.pk  prac.pk  %}" method="POST">
           {% csrf_token %}
-          <div class="form-group">
-            <label for="pracownikID">Id działu:</label>
-            <input type="Dzial" min="1" name="dzialId" value="{{ dzial_id }}" class="form-control" id="dzialId" placeholder="Id działu">
-          </div>
+          <select id="dzial" name="dzial">
+            {% for dzial in dzial_list %}
+            <option value="{{ dzial.pk }}" selected="selected">{{ dzial.name }}</option>
+            {% endfor %}
+          </select>
           <div class="form-row">
             <div class="form-group col">
               <label for="pracownikName">Nowe imię:</label>
-              <input type="text" name="pracownikName" value="{{ pracownik_name }}" class="form-control" id="pracownikName" placeholder="Stare imię pracownika: {{ prac.first_name }}">
+              <input type="text" name="first_name" value="{{ pracownik_name }}" class="form-control" id="pracownikName" placeholder="Stare imię pracownika: {{ prac.first_name }}", maxlength="15", required>
             </div>
             <div class="form-group col">
               <label for="departmentCode">Nowe nazwisko:</label>
-              <input type="text" name="pracownikLastName" value="{{ pracownik_last_name }}" class="form-control" id="departmentCode" placeholder="Stare nazwisko pracownika: {{ prac.last_name }}">
+              <input type="text" name="last_name" value="{{ pracownik_last_name }}" class="form-control" id="departmentCode" placeholder="Stare nazwisko pracownika: {{ prac.last_name }}", maxlength="25", required>
             </div>
           </div>
           <div class="form-group">
             <label for="pracownikPhoneNum">Nowy numer telefonu:</label>
-            <input type="tel" name="pracownikPhoneNum" value="{{ phone_num }}" class="form-control" id="pracownikPhoneNum" placeholder="Stary numer telefonu: {{ prac.phone_number }}">
+            <input type="tel" name="phone_number" value="{{ phone_num }}" class="form-control" id="pracownikPhoneNum" placeholder="Stary numer telefonu: {{ prac.phone_number }}", minlength="12", maxlength="12" required>
           </div>
           <div class="form-group">
             <label for="pracownikEmail">Nowy email:</label>
-            <input type="email" name="pracownikEmail" value="{{ email }}" class="form-control" id="pracownikEmail" placeholder="Stary email: {{ prac.email }}">
+            <input type="email" name="email" value="{{ email }}" class="form-control" id="pracownikEmail" placeholder="Stary email: {{ prac.email }}", maxlength="125">
           </div>
           <div class="form-group">
             <label for="pracownikPosition">Nowe stanowisko:</label>
-            <input type="text" name="pracownikPosition" value="{{ position }}" class="form-control" id="pracownikPosition" placeholder="Stare stanowisko: {{ prac.stanowisko }}">
+            <input type="text" name="position" value="{{ position }}" class="form-control" id="pracownikPosition" placeholder="Stare stanowisko: {{ prac.stanowisko }}", maxlength="50">
           </div>
           <div class="form-row">
             <button type="submit" class="btn btn-primary">Zapisz</button>

@@ -27,29 +27,29 @@
           {% csrf_token %}
           <div class="form-group">
             <label for="pracownikID">Id działu:</label>
-            <input type="number" min="1" name="dzialId" value="{{ dzial.pk }}" class="form-control" id="dzialId" placeholder="Id działu">
+            <input type="number" min="1" name="dzial" value="{{ dzial.pk }}" class="form-control" id="pracownikID" placeholder="Id działu", readonly>
           </div>
           <div class="form-row">
             <div class="form-group col">
               <label for="pracownikName">Imię:</label>
-              <input type="text" name="pracownikName" value="{{ pracownik_name }}" class="form-control" id="pracownikName" placeholder="Imię pracownika">
+              <input type="text" name="first_name" value="{{ pracownik_name }}" class="form-control" id="pracownikName" placeholder="Imię pracownika", maxlength="15", required>
             </div>
             <div class="form-group col">
               <label for="departmentCode">Nazwisko:</label>
-              <input type="text" name="pracownikLastName" value="{{ pracownik_last_name }}" class="form-control" id="departmentCode" placeholder="Nazwisko pracownika">
+              <input type="text" name="last_name" value="{{ pracownik_last_name }}" class="form-control" id="departmentCode" placeholder="Nazwisko pracownika", maxlength="25", required>
             </div>
           </div>
           <div class="form-group">
             <label for="pracownikPhoneNum">Numer telefonu:</label>
-            <input type="tel" name="pracownikPhoneNum" value="{{ phone_num }}" class="form-control" id="pracownikPhoneNum" placeholder="Numer telefonu: +48">
+            <input type="tel" name="phone_number" value="{{ phone_num }}" class="form-control" id="pracownikPhoneNum" placeholder="Numer telefonu: +48", minlength="12", maxlength="12" required>
           </div>
           <div class="form-group">
             <label for="pracownikEmail">Email:</label>
-            <input type="email" name="pracownikEmail" value="{{ email }}" class="form-control" id="pracownikEmail" placeholder="Email: example@example.pl">
+            <input type="email" name="email" value="{{ email }}" class="form-control" id="pracownikEmail" placeholder="Email: example@example.pl", maxlength="125">
           </div>
           <div class="form-group">
             <label for="pracownikPosition">Stanowisko:</label>
-            <input type="text" name="pracownikPosition" value="{{ position }}" class="form-control" id="pracownikPosition" placeholder="Stanowisko">
+            <input type="text" name="position" value="{{ position }}" class="form-control" id="pracownikPosition" placeholder="Stanowisko", maxlength="50">
           </div>
           <div class="form-row">
             <button type="submit" class="btn btn-primary">Zapisz</button>
